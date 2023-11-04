@@ -69,7 +69,7 @@ class Signup
 
 
         $query = "INSERT INTO users (stud_ID,firstName,lastName,gender,email,password,url_address)
-                  VALUES ('$stud_ID','$firstName','$lastName','$gender','$email','$password','$url_address')";
+                  VALUES ('$stud_ID','$firstName','$lastName','$gender','$email', PASSWORD('$password'),'$url_address')";
 
         
 

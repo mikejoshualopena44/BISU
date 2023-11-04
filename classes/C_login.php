@@ -12,7 +12,8 @@ class Login
 		$email = addslashes($data['email']);
 		$password = addslashes($data['password']);
 
-		$query = "select * from users where email = '$email' limit 1 ";
+
+		$query = "select * from users where email = '$email'AND `password` = PASSWORD('$password') limit 1 ";
 
 		$DB = new CONNECTION_DB();
 		$result = $DB->read($query);
@@ -22,20 +23,18 @@ class Login
 
 			$row = $result[0];
 
-			if($password == $row['password'])
+			if($row['password'])
 			{
 
 				//create session data it identify the browser that you are using and it identify the user previously
 				$_SESSION['Bisuconnect_stud_ID'] = $row['stud_ID'];
 
-			}else
-			{
-				$this->error .= "Invalid user password<br>";
 			}
+
 		}else
 		{
 
-			$this->error .= "Invalid email please Login first<br>";
+			$this->error .= "Invalid email and password<br>";
 		}
 
 		return $this->error;

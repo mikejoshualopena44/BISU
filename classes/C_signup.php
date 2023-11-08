@@ -66,10 +66,11 @@ class Signup
         //generate url
         $url_address = "https://BisuConnect/". strtolower($firstName) .".". strtolower($lastName). "/" . strtolower(".com");
 
-
+        //hash password using php password_hash($password)// hash in sql PASSWORD('$password')
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
         $query = "INSERT INTO users (stud_ID,firstName,lastName,gender,email,password,url_address)
-                  VALUES ('$stud_ID','$firstName','$lastName','$gender','$email', PASSWORD('$password'),'$url_address')";
+                  VALUES ('$stud_ID','$firstName','$lastName','$gender','$email', '$passwordHash','$url_address')";
 
         
 

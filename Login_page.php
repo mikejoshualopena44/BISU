@@ -5,7 +5,7 @@ session_start();
     include ("classes/connection.php");
     include ("classes/C_signup.php");
     include ("classes/C_login.php");
-    print_r($_POST);
+    
     $stud_ID = "";
     $firstName = "";
     $lastName = "";

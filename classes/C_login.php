@@ -7,38 +7,29 @@ class Login
  
 	public function evaluate($data)
 	{
-//read If user exists in db
-
+		// Read if the user exists in the database
 		$email = addslashes($data['email']);
-		$password = addslashes($data['password']);
-
-
-		$query = "select * from users where email = '$email'AND `password` = PASSWORD('$password') limit 1 ";
-
+		$password = $data['password'];
+	
+		$query = "select * from users where email = '$email' limit 1";
+	
 		$DB = new CONNECTION_DB();
 		$result = $DB->read($query);
-
-		if($result)
-		{
-
+	
+		if ($result) {
 			$row = $result[0];
-
-			if($row['password'])
-			{
-
-				//create session data it identify the browser that you are using and it identify the user previously
+	
+			if (password_verify($password, $row['password'])) {
+				// Password is correct
 				$_SESSION['Bisuconnect_stud_ID'] = $row['stud_ID'];
-
+			} else {
+				$this->error .= "Wrong password<br>";
 			}
-
-		}else
-		{
-
-			$this->error .= "Invalid email and password<br>";
+		} else {
+			$this->error .= "Invalid email, please signup first<br>";
 		}
-
+	
 		return $this->error;
-		
 	}
 
 	public function check_login($id)  //chck if not numeric redirect,if numeric retrieve user_data

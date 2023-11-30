@@ -99,9 +99,7 @@
             </div>
         <div class="tag">
             <div class="left-icons">
-                <a href=""><i class='bx bx-heart bx-lg'></i></a>
-                <a href=""><i class='bx bx-message-dots bx-lg'></i></a>
-                <a href=""><i class='bx bx-share-alt bx-lg'></i></a>
+                <a href="like.php"><i class='bx bx-heart bx-lg'></i></a>
             </div>
             <div class="right-icons">
                 <i class='bx bx-bookmark-plus bx-lg'></i>
